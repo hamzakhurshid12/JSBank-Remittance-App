@@ -23,7 +23,7 @@ class BalanceCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     const Text(
-                      'Total Balance,',
+                      'Home Remittance Account',
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
@@ -42,7 +42,7 @@ class BalanceCard extends StatelessWidget {
                               color: ColorHelper.yellow2),
                         ),
                         Text(
-                          ' MLR',
+                          ' EUR',
                           style: TextStyle(
                               fontSize: 35,
                               fontWeight: FontWeight.w500,
@@ -61,8 +61,8 @@ class BalanceCard extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                               color: ColorHelper.lightNavyBlue),
                         ),
-                        Text(
-                          ' \$10,000',
+                        const Text(
+                          '635400 PKR',
                           style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w500,
@@ -70,7 +70,7 @@ class BalanceCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Container(
