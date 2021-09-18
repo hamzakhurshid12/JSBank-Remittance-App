@@ -68,10 +68,9 @@ class HomeView extends GetView<HomeController> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
-        _icon(Icons.transfer_within_a_station, "Transfer"),
-        _icon(Icons.phone, "Airtime"),
-        _icon(Icons.payment, "Pay Bills"),
-        _icon(Icons.code, "Qr Pay"),
+        _icon(Icons.attach_money, "Remit USD"),
+        _icon(Icons.euro, "Remit EUR"),
+        _icon(Icons.attach_money, "Remit SGD"),
       ],
     );
   }

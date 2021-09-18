@@ -5,6 +5,13 @@ import '../color_helper.dart';
 
 class BalanceCard extends StatelessWidget {
 
+  String? title;
+  String? amount;
+  String? currency;
+  String? equivalentAmount;
+  String? buttonText;
+  Function? onClickButton;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,8 +29,8 @@ class BalanceCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    const Text(
-                      'Home Remittance Account',
+                    Text(
+                      title!,
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
@@ -34,7 +41,7 @@ class BalanceCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          '6,354',
+                          amount!,
                           style: GoogleFonts.mulish(
                               //textStyle: Theme.of(context).textTheme.display1,
                               fontSize: 35,
@@ -42,7 +49,7 @@ class BalanceCard extends StatelessWidget {
                               color: ColorHelper.yellow2),
                         ),
                         Text(
-                          ' EUR',
+                          ' '+currency!,
                           style: TextStyle(
                               fontSize: 35,
                               fontWeight: FontWeight.w500,
@@ -61,9 +68,9 @@ class BalanceCard extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                               color: ColorHelper.lightNavyBlue),
                         ),
-                        const Text(
-                          '635400 PKR',
-                          style: TextStyle(
+                        Text(
+                          equivalentAmount!,
+                          style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w500,
                               color: Colors.white),
@@ -82,7 +89,7 @@ class BalanceCard extends StatelessWidget {
                             border: Border.all(color: Colors.white, width: 1)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
+                          children: const <Widget>[
                             Icon(
                               Icons.add,
                               color: Colors.white,
