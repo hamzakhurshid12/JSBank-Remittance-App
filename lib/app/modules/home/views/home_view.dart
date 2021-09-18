@@ -24,7 +24,8 @@ class HomeView extends GetView<HomeController> {
           ),
           centerTitle: true
       ),
-      body: Column(
+      body: SingleChildScrollView(
+    child:  Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const Padding(
@@ -40,7 +41,7 @@ class HomeView extends GetView<HomeController> {
                   scrollDirection: Axis.horizontal,
                   itemCount: 3,
                   // ignore: avoid_print
-                  itemBuilder: (_, index) => BalanceCard("Home Remittance Account","2,242","EUR","354,000 PKR","Send Remittance",(){print("onclick Send Remittance!");}),
+                  itemBuilder: (_, index) => BalanceCard("Home Remittance Account","2,242","EUR","354,000 PKR","Send",(){print("onclick Send Remittance!");}),
                 )
             ),
             const Padding(
@@ -61,6 +62,7 @@ class HomeView extends GetView<HomeController> {
             _transactionList(),
           ],
         ),
+      ),
     );
   }
 

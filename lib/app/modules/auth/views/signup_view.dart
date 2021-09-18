@@ -23,18 +23,17 @@ class SignupView extends GetView {
       resizeToAvoidBottomInset: false,
       body: Container(
         decoration: BoxDecoration(gradient: ColorHelper.primaryAppGradient),
-        child: Stack(
+        child: SingleChildScrollView(
+        child: Column(
           children: [
-            Positioned.fill(
-              top: 0.0,
-              child: buildHeader(screenHeight, screenWidth),
-            ),
-            Positioned.fill(
-              child: Form(key: _formKey, child: buildSignupForm(screenWidth, screenHeight, context)),
-            ),
-            Positioned.fill(bottom: 30.0, child: buildTermsAndSignupButton(screenWidth, screenHeight, context))
+            buildHeader(screenHeight, screenWidth),
+          Form(key: _formKey, child: buildSignupForm(screenWidth, screenHeight, context)),
+          buildTermsAndSignupButton(screenWidth, screenHeight, context),
+            paddingVerticalMedium(screenHeight),
+            paddingVerticalMedium(screenHeight),
           ],
         ),
+      ),
       ),
     );
   }
@@ -125,6 +124,19 @@ class SignupView extends GetView {
           child: Row(
             children: [
               WhiteOutlineTextField(
+                hintText: "Date of Birth (YYYYMMDD)",
+                width: screenWidth * 0.8,
+                controller: authorizationController.cnicController,
+              ),
+            ],
+          ),
+        ),
+        paddingVerticalSmall(screenHeight),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
+          child: Row(
+            children: [
+              WhiteOutlineTextField(
                 hintText: "CNIC (without dashes)",
                 width: screenWidth * 0.8,
                 controller: authorizationController.cnicController,
@@ -138,7 +150,7 @@ class SignupView extends GetView {
           child: Row(
             children: [
               WhiteOutlineTextField(
-                hintText: "CNIC issue Date (YYYYMMDD)",
+                hintText: "Mobile Number",
                 width: screenWidth * 0.8,
                 controller: authorizationController.cnicIssueDateController,
               ),
@@ -151,13 +163,40 @@ class SignupView extends GetView {
           child: Row(
             children: [
               WhiteOutlineTextField(
-                  hintText: "Phone Number",
+                  hintText: "Source of Income",
                   width: screenWidth * 0.8,
                   controller: authorizationController.phoneNumberController,
                 ),
             ],
           ),
         ),
+        paddingVerticalSmall(screenHeight),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
+          child: Row(
+            children: [
+              WhiteOutlineTextField(
+                hintText: "Purpose of Account",
+                width: screenWidth * 0.8,
+                controller: authorizationController.phoneNumberController,
+              ),
+            ],
+          ),
+        ),
+        paddingVerticalSmall(screenHeight),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
+          child: Row(
+            children: [
+              WhiteOutlineTextField(
+                hintText: "International Remittance Location",
+                width: screenWidth * 0.8,
+                controller: authorizationController.phoneNumberController,
+              ),
+            ],
+          ),
+        ),
+        paddingVerticalSmall(screenHeight),
       ],
     );
   }
