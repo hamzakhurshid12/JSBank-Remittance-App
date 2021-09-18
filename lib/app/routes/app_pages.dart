@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 
-import 'package:jsbank_remittance/app/modules/authorization/bindings/authorization_binding.dart';
-import 'package:jsbank_remittance/app/modules/authorization/views/authorization_view.dart';
+import 'package:jsbank_remittance/app/modules/auth/bindings/auth_binding.dart';
+import 'package:jsbank_remittance/app/modules/auth/views/auth_view.dart';
+import 'package:jsbank_remittance/app/modules/auth/views/splash_view.dart';
 import 'package:jsbank_remittance/app/modules/home/bindings/home_binding.dart';
 import 'package:jsbank_remittance/app/modules/home/views/home_view.dart';
 
@@ -10,7 +11,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.AUTH;
 
   static final routes = [
     GetPage(
@@ -19,9 +20,9 @@ class AppPages {
       binding: HomeBinding(),
     ),
     GetPage(
-      name: _Paths.AUTHORIZATION,
-      page: () => AuthorizationView(),
-      binding: AuthorizationBinding(),
+      name: _Paths.AUTH,
+      page: () => SplashView(),
+      binding: AuthBinding(),
     ),
   ];
 }

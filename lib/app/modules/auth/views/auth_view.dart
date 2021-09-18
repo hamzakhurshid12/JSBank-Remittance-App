@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/authorization_controller.dart';
+import '../controllers/auth_controller.dart';
 
-class AuthorizationView extends GetView<AuthorizationController> {
+class AuthView extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('AuthorizationView'),
+        title: Text('AuthView'),
         centerTitle: true,
       ),
       body: Center(
         child: Text(
-          'AuthorizationView is working',
+          'AuthView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),
