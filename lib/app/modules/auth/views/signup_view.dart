@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:jsbank_remittance/app/modules/auth/controllers/auth_controller.dart';
 import 'package:jsbank_remittance/app/utils/color_helper.dart';
 import 'package:jsbank_remittance/app/utils/widgets/buttons/flat_button_white.dart';
+import 'package:jsbank_remittance/app/utils/widgets/dialogs/sms_verification_dialog.dart';
 import 'package:jsbank_remittance/app/utils/widgets/textFields/white_outline_text_field.dart';
 import 'package:jsbank_remittance/app/utils/widgets/dialogs/confirm_email_dialog.dart';
 
@@ -49,30 +50,25 @@ class SignupView extends GetView {
         paddingVerticalMedium(screenHeight),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
-          child: Obx(() => FlatButtonWhite(
+          child: FlatButtonWhite(
                 width: screenWidth * 0.8,
                 text: "Sign Up",
-                isEnabled: authorizationController.isSignupButtonEnabled.value,
+                isEnabled: true,
                 onPressed: () async {
-                  await authorizationController.onClickSignUp();
-                  authorizationController.isVerificationEmailSent.value
-                      ? showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return ConfirmEmailDialog(
-                              email: authorizationController.emailController.text,
-                              onTap: () {
-                                Get.off(() => LoginView());
-                              },
-                            );
-                          }).then((exit) {
-                          print("in exit");
-                          Get.off(() => LoginView());
-                        })
-                      : Container();
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return SmsVerificationDialog(
+                          codeTextEditingController: authorizationController.phoneNumberPinController,
+                          onTap: () {
+                            //editProfileController.checkCode();
+                            // ignore: avoid_print
+                            print("Pin Code is correct!");
+                          },
+                        );
+                      });
                 },
               ),
-          ),
         ),
       ],
     );
@@ -131,11 +127,7 @@ class SignupView extends GetView {
               WhiteOutlineTextField(
                 hintText: "CNIC (without dashes)",
                 width: screenWidth * 0.8,
-                controller: authorizationController.emailController,
-                focusNode: authorizationController.emailFocus,
-                focus: () {
-                  FocusScope.of(context).requestFocus(authorizationController.passwordFocus);
-                },
+                controller: authorizationController.cnicController,
               ),
             ],
           ),
@@ -148,11 +140,7 @@ class SignupView extends GetView {
               WhiteOutlineTextField(
                 hintText: "CNIC issue Date (YYYYMMDD)",
                 width: screenWidth * 0.8,
-                controller: authorizationController.emailController,
-                focusNode: authorizationController.emailFocus,
-                focus: () {
-                  FocusScope.of(context).requestFocus(authorizationController.passwordFocus);
-                },
+                controller: authorizationController.cnicIssueDateController,
               ),
             ],
           ),
@@ -165,11 +153,7 @@ class SignupView extends GetView {
               WhiteOutlineTextField(
                   hintText: "Phone Number",
                   width: screenWidth * 0.8,
-                  controller: authorizationController.passwordFirstController,
-                  focusNode: authorizationController.passwordFocus,
-                  focus: () {
-                    FocusScope.of(context).requestFocus(authorizationController.passwordAgainFocus);
-                  },
+                  controller: authorizationController.phoneNumberController,
                 ),
             ],
           ),

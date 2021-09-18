@@ -7,9 +7,9 @@ class AuthController extends GetxController {
   final RxBool isTermsAndConditionsChecked = false.obs;
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordFirstController = TextEditingController();
-  final TextEditingController passwordAgainController = TextEditingController();
+  final TextEditingController cnicController = TextEditingController();
+  final TextEditingController cnicIssueDateController = TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
 
   final TextEditingController phoneNumberPinController = TextEditingController();
 
@@ -53,11 +53,6 @@ class AuthController extends GetxController {
   }
 
   void signupButtonValidation() {
-    isSignupButtonEnabled.value = firstNameController.text.isNotEmpty &&
-        lastNameController.text.isNotEmpty &&
-        emailController.text.isNotEmpty &&
-        passwordFirstController.text.isNotEmpty &&
-        passwordAgainController.text.isNotEmpty;
   }
 
   void signinButtonValidation() {
@@ -76,9 +71,6 @@ class AuthController extends GetxController {
     //Signup Screen Listeners
     firstNameController.addListener(signupButtonValidation);
     lastNameController.addListener(signupButtonValidation);
-    emailController.addListener(signupButtonValidation);
-    passwordFirstController.addListener(signupButtonValidation);
-    passwordAgainController.addListener(signupButtonValidation);
     //Signin Screen Listeners
     signInEmailController.addListener(signinButtonValidation);
     signInPasswordController.addListener(signinButtonValidation);

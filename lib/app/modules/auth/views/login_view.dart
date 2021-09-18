@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:jsbank_remittance/app/modules/auth/controllers/auth_controller.dart';
+import 'package:jsbank_remittance/app/modules/home/views/home_view.dart';
 import 'package:jsbank_remittance/app/utils/color_helper.dart';
 import 'package:jsbank_remittance/app/utils/widgets/buttons/flat_button_white.dart';
 import 'package:jsbank_remittance/app/utils/widgets/dialogs/forgot_password_dialog.dart';
@@ -69,8 +70,7 @@ class LoginView extends GetView {
                       padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
                       child: Row(
                         children: [
-                          Obx(
-                            () => WhiteOutlineTextField(
+                          WhiteOutlineTextField(
                               hintText: "Phone Number",
                               width: screenWidth * 0.8,
                               controller: authorizationController.signInPasswordController,
@@ -79,7 +79,6 @@ class LoginView extends GetView {
                                 authorizationController.signInpasswordFocus.unfocus();
                               },
                             ),
-                          ),
                         ],
                       ),
                     ),
@@ -91,21 +90,18 @@ class LoginView extends GetView {
                         isEnabled: authorizationController.isSigninButtonEnabled.value,
                         text: "Sign In",
                         onPressed: () {
-                          /*if (_formKey.currentState!.validate()) {
-                            authorizationController.onClickSignIn();
-                          }*/
                           showDialog(
                               context: context,
                               builder: (BuildContext context) {
                                 return SmsVerificationDialog(
                                   codeTextEditingController: authorizationController.phoneNumberPinController,
                                   onTap: () {
-                                    //editProfileController.checkCode();
-                                    // ignore: avoid_print
                                     print("Pin Code is correct!");
+                                    Get.to(HomeView());
                                   },
                                 );
-                              });
+                              }
+                              );
                         },
                       ),
                       ),
