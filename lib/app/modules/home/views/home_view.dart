@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jsbank_remittance/app/modules/transfer/views/transfer_view.dart';
 import 'package:jsbank_remittance/app/utils/color_helper.dart';
 import 'package:jsbank_remittance/app/utils/widgets/balance_card.dart';
 import 'package:jsbank_remittance/app/utils/widgets/buttons/flat_white_button.dart';
@@ -12,8 +13,6 @@ import '../controllers/home_controller.dart';
 class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorHelper.primaryGradientTop,
@@ -40,7 +39,8 @@ class HomeView extends GetView<HomeController> {
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 3,
-                  itemBuilder: (_, index) => BalanceCard(),
+                  // ignore: avoid_print
+                  itemBuilder: (_, index) => BalanceCard("Home Remittance Account","2,242","EUR","354,000 PKR","Send Remittance",(){print("onclick Send Remittance!");}),
                 )
             ),
             const Padding(
@@ -81,6 +81,7 @@ class HomeView extends GetView<HomeController> {
         GestureDetector(
           onTap: () {
             //Navigator.pushNamed(context, '/transfer');
+            Get.to(TransferView());
           },
           child: Container(
             height: 80,

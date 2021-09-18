@@ -10,7 +10,11 @@ class BalanceCard extends StatelessWidget {
   String? currency;
   String? equivalentAmount;
   String? buttonText;
-  Function? onClickButton;
+  Function()? onClickButton;
+
+
+  BalanceCard(this.title, this.amount, this.currency, this.equivalentAmount,
+      this.buttonText, this.onClickButton, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +81,7 @@ class BalanceCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 10,
                     ),
                     Container(
@@ -87,19 +91,23 @@ class BalanceCard extends StatelessWidget {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(12)),
                             border: Border.all(color: Colors.white, width: 1)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const <Widget>[
-                            Icon(
-                              Icons.add,
-                              color: Colors.white,
-                              size: 20,
-                            ),
-                            SizedBox(width: 5),
-                            Text("Top up",
-                                style: TextStyle(color: Colors.white)),
-                          ],
-                        ))
+                        child: GestureDetector(
+                          onTap: onClickButton,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              const Icon(
+                                Icons.add,
+                                color: Colors.white,
+                                size: 20,
+                              ),
+                              SizedBox(width: 5),
+                              Text(buttonText!,
+                                  style: TextStyle(color: Colors.white)),
+                            ],
+                          )
+                        ),
+                        )
                   ],
                 ),
                 Positioned(
