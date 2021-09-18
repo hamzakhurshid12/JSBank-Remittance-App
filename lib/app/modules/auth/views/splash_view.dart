@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:jsbank_remittance/app/modules/auth/controllers/splash_controller_controller.dart';
+import 'package:jsbank_remittance/app/modules/auth/views/signup_view.dart';
 import 'package:jsbank_remittance/app/utils/color_helper.dart';
 import 'package:jsbank_remittance/app/utils/widgets/buttons/flat_white_button.dart';
+
+import 'login_view.dart';
 
 class SplashView extends GetView {
   final int TRANSITION_DELAY_DURATION = 500;
@@ -64,7 +67,7 @@ class SplashView extends GetView {
                                 text: "Sign In",
                                 color: ColorHelper.primaryGradientTop,
                                 onTap: () {
-                                  //Get.to(()=>LoginView());
+                                  Get.to(()=>LoginView());
                                 },
                               ),
                             ),
@@ -80,7 +83,7 @@ class SplashView extends GetView {
                                 text: "Sign Up",
                                 color: ColorHelper.primaryGradientBottom,
                                 onTap: () {
-                                  //Get.to(()=>SignupView());
+                                  Get.to(()=>SignupView());
                                 },
                               ),
                             )

@@ -25,7 +25,7 @@ class FlatButtonWhite extends StatelessWidget {
       height: 55.0,
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
-        color: isEnabled? Color(0xFFA30F68) : ColorHelper.buttonBackgroundDefault,
+        color: ColorHelper.buttonBackgroundDefault,
         borderRadius: BorderRadius.all(Radius.circular(10.0)),
       ),
       child: TextButton(
