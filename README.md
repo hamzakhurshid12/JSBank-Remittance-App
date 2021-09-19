@@ -21,6 +21,8 @@ https://github.com/roshnaeem/JSBank-Remittance-App.git
 * Java
 * Flutter
 * Dart
+* JS Bank APIs
+* API of [convertmymoney.com](http://www.convertmymoney.com/)
 
 ## Team
 * Hamza Khurshid
