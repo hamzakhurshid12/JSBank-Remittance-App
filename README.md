@@ -1,16 +1,27 @@
 # jsbank_remittance
 
-App for JSBank Remittance
+Remittance app for JS Bank. 
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Preview
 
-A few resources to get you started if this is your first Flutter project:
+<img src= "assets\images\app.gif" height ="400" text-align="center">
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Getting Satrted
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone the project
+```
+https://github.com/roshnaeem/JSBank-Remittance-App.git
+```
+3. Import this project in android studio.
+4. Run the project on Android TV AVD(Android Virtual device).
+
+## Built With
+* Android Studio
+* Java
+* Flutter
+* Dart
+
+## Team
+* Hamza Khurshid
+* Rosheen Naeem
