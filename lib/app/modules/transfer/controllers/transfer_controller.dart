@@ -16,6 +16,10 @@ class TransferController extends GetxController {
   TextEditingController sendingAmountController = TextEditingController();
   TextEditingController receivingAmountController = TextEditingController();
 
+  var currencyTransferRate = "".obs;
+  var currencyTransferFee = "0.0".obs;
+
+
   @override
   void onInit() {
     super.onInit();
@@ -51,6 +55,10 @@ class TransferController extends GetxController {
           sendingCurrencyController.text, receivingCurrencyController.text,
           double.parse(sendingAmountController.text.toString()));
       receivingAmountController.text = output.toStringAsFixed(2);
+      currencyTransferRate.value = getCurrencyConverted(
+          sendingCurrencyController.text, receivingCurrencyController.text,
+          1.0).toStringAsFixed(2);
+      currencyTransferRate.refresh();
     } else {
       receivingAmountController.text = "0.00";
     }
