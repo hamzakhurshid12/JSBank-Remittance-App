@@ -54,7 +54,7 @@ class SignupView extends GetView {
                 text: "Sign Up",
                 isEnabled: true,
                 onPressed: () async {
-                  showDialog(
+                  /*showDialog(
                       context: context,
                       builder: (BuildContext context) {
                         return SmsVerificationDialog(
@@ -65,7 +65,8 @@ class SignupView extends GetView {
                             print("Pin Code is correct!");
                           },
                         );
-                      });
+                      });*/
+                  await authorizationController.signupUser();
                 },
               ),
         ),
@@ -124,9 +125,9 @@ class SignupView extends GetView {
           child: Row(
             children: [
               WhiteOutlineTextField(
-                hintText: "Date of Birth (YYYYMMDD)",
+                hintText: "Email",
                 width: screenWidth * 0.8,
-                controller: authorizationController.cnicController,
+                controller: authorizationController.emailController,
               ),
             ],
           ),
@@ -150,7 +151,7 @@ class SignupView extends GetView {
           child: Row(
             children: [
               WhiteOutlineTextField(
-                hintText: "Mobile Number",
+                hintText: "CNIC Issuance Date (YYYYMMDD)",
                 width: screenWidth * 0.8,
                 controller: authorizationController.cnicIssueDateController,
               ),
@@ -163,33 +164,7 @@ class SignupView extends GetView {
           child: Row(
             children: [
               WhiteOutlineTextField(
-                  hintText: "Source of Income",
-                  width: screenWidth * 0.8,
-                  controller: authorizationController.phoneNumberController,
-                ),
-            ],
-          ),
-        ),
-        paddingVerticalSmall(screenHeight),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
-          child: Row(
-            children: [
-              WhiteOutlineTextField(
-                hintText: "Purpose of Account",
-                width: screenWidth * 0.8,
-                controller: authorizationController.phoneNumberController,
-              ),
-            ],
-          ),
-        ),
-        paddingVerticalSmall(screenHeight),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
-          child: Row(
-            children: [
-              WhiteOutlineTextField(
-                hintText: "International Remittance Location",
+                hintText: "Mobile Number",
                 width: screenWidth * 0.8,
                 controller: authorizationController.phoneNumberController,
               ),
