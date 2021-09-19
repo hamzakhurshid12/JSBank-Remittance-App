@@ -63,7 +63,7 @@ class HomeView extends GetView<HomeController> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: const [TitleText(text: 'Operations')],
             ),
-            _operationsWidget(),
+            _operationsWidget(context),
             const Padding(
               padding: EdgeInsets.all(10.0),
             ),
@@ -78,25 +78,34 @@ class HomeView extends GetView<HomeController> {
     );
   }
 
-  Widget _operationsWidget() {
-    return Row(
+  Widget _operationsWidget(BuildContext context) {
+    /*return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
         _icon(Icons.attach_money, "Remit USD"),
         _icon(Icons.euro, "Remit EUR"),
         _icon(Icons.attach_money, "Remit SGD"),
       ],
+    );*/
+    return SizedBox(
+        height: MediaQuery.of(context).size.width * 0.3,
+        child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: _transferController.allWallets.allWallets!.length,
+        itemBuilder: (_, index) => _icon(Icons.money, "Remit "+_transferController.allWallets.allWallets![index].currency!, (){
+          _transferController.sendingCurrencyController.text = _transferController.allWallets.allWallets![index].currency!;
+          _transferController.sendingAmountController.text = _transferController.allWallets.allWallets![index].amount!.toStringAsFixed(2);
+          Get.to(TransferView());
+        })
+    ),
     );
   }
 
-  Widget _icon(IconData icon, String text) {
+  Widget _icon(IconData icon, String text, Function()? onTap) {
     return Column(
       children: <Widget>[
         GestureDetector(
-          onTap: () {
-            //Navigator.pushNamed(context, '/transfer');
-            Get.to(TransferView());
-          },
+          onTap: onTap,
           child: Container(
             height: 80,
             width: 80,
