@@ -8,7 +8,7 @@ import '../controllers/transfer_controller.dart';
 
 class TransferView extends GetView<TransferController> {
 
-  TransferController _transferController = Get.put(TransferController());
+  final TransferController _transferController = Get.put(TransferController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class TransferView extends GetView<TransferController> {
       body: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(top:10.0),
+            padding: EdgeInsets.only(top:20.0),
           ),
           Padding(
             padding: const EdgeInsets.all(5.0),
@@ -42,15 +42,15 @@ class TransferView extends GetView<TransferController> {
                             EdgeInsets.symmetric(horizontal: 28, vertical: 18),
                         focusedBorder: OutlineInputBorder(
                             borderRadius:
-                            BorderRadius.only(topLeft: Radius.circular(10.0), bottomLeft: Radius.circular(10.0)),
+                            BorderRadius.only(topLeft: Radius.circular(5.0), bottomLeft: Radius.circular(5.0)),
                             borderSide: BorderSide(color: ColorHelper.black)),
                         errorBorder: OutlineInputBorder(
                             borderRadius:
-                            BorderRadius.only(topLeft: Radius.circular(10.0), bottomLeft: Radius.circular(10.0)),
+                            BorderRadius.only(topLeft: Radius.circular(5.0), bottomLeft: Radius.circular(5.0)),
                             borderSide: BorderSide(color: Colors.red)),
                         enabledBorder: OutlineInputBorder(
                             borderRadius:
-                                BorderRadius.only(topLeft: Radius.circular(10.0), bottomLeft: Radius.circular(10.0)),
+                                BorderRadius.only(topLeft: Radius.circular(5.0), bottomLeft: Radius.circular(5.0)),
                             borderSide: BorderSide(color: ColorHelper.black)),
                         hintStyle: TextStyle(
                             color: ColorHelper.black,
@@ -87,15 +87,15 @@ class TransferView extends GetView<TransferController> {
                             EdgeInsets.symmetric(horizontal: 28, vertical: 18),
                         focusedBorder: OutlineInputBorder(
                             borderRadius:
-                            BorderRadius.only(topRight: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
+                            BorderRadius.only(topRight: Radius.circular(5.0), bottomRight: Radius.circular(5.0)),
                             borderSide: BorderSide(color: ColorHelper.black)),
                         errorBorder: OutlineInputBorder(
                             borderRadius:
-                            BorderRadius.only(topRight: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
+                            BorderRadius.only(topRight: Radius.circular(5.0), bottomRight: Radius.circular(5.0)),
                             borderSide: BorderSide(color: Colors.red)),
                         enabledBorder: OutlineInputBorder(
                             borderRadius:
-                            BorderRadius.only(topRight: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
+                            BorderRadius.only(topRight: Radius.circular(5.0), bottomRight: Radius.circular(5.0)),
                             borderSide: BorderSide(color: ColorHelper.black)),
                         hintStyle: TextStyle(
                             color: ColorHelper.black,
@@ -110,7 +110,62 @@ class TransferView extends GetView<TransferController> {
               ],
             ),
           ),
-          //////////////////////////////////////////They recieve////////////////////////////////////////
+
+          //////////////////////////////Details Card//////////////////////////////////////
+          Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            color: ColorHelper.navyBlue2,
+            elevation: 10,
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height*0.18,
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.bolt, size: 30, color: Colors.white,),
+                        Text('Quick\n Transfer', textAlign: TextAlign.center, style: TextStyle(color: Colors.white),),
+                      ],
+                    ),
+                  ),
+
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.6,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(children: [
+                          Icon(Icons.attach_money, color: Colors.white,),
+                          Text(' 168.1 Guaranteed transfer rate', style: TextStyle(color: Colors.white),),
+                        ],),
+                        Row(children: [
+                          Icon(Icons.remove_circle, color: Colors.white,),
+                          Text(' 0.00 CAD transfer fee', style: TextStyle(color: Colors.white),),
+                        ],),
+                        Row(children: [
+                          Icon(Icons.functions, color: Colors.white,),
+                          Text(' 125.0 CAD converted', style: TextStyle(color: Colors.white),),
+                        ],),
+                      ],
+                    ),
+                  ),
+                  /*const ListTile(
+                  leading: Icon(Icons.bolt, size: 30),
+                  title: Text('Sonu Nigam', style: TextStyle(color: Colors.white),),
+                  subtitle: Text('Best of Sonu Nigam Song', style: TextStyle(color: Colors.white)),
+                ),*/
+                ],
+              ),
+            ),
+          ),
+
+          //////////////////////////////////////////They receive////////////////////////////////////////
+          Padding(padding: EdgeInsets.only(top:15.0),),
           Padding(
             padding: const EdgeInsets.all(5.0),
             child: Row(
@@ -126,15 +181,15 @@ class TransferView extends GetView<TransferController> {
                         EdgeInsets.symmetric(horizontal: 28, vertical: 18),
                         focusedBorder: OutlineInputBorder(
                             borderRadius:
-                            BorderRadius.only(topLeft: Radius.circular(10.0), bottomLeft: Radius.circular(10.0)),
+                            BorderRadius.only(topLeft: Radius.circular(5.0), bottomLeft: Radius.circular(5.0)),
                             borderSide: BorderSide(color: ColorHelper.black)),
                         errorBorder: OutlineInputBorder(
                             borderRadius:
-                            BorderRadius.only(topLeft: Radius.circular(10.0), bottomLeft: Radius.circular(10.0)),
+                            BorderRadius.only(topLeft: Radius.circular(5.0), bottomLeft: Radius.circular(5.0)),
                             borderSide: BorderSide(color: Colors.red)),
                         enabledBorder: OutlineInputBorder(
                             borderRadius:
-                            BorderRadius.only(topLeft: Radius.circular(10.0), bottomLeft: Radius.circular(10.0)),
+                            BorderRadius.only(topLeft: Radius.circular(5.0), bottomLeft: Radius.circular(5.0)),
                             borderSide: BorderSide(color: ColorHelper.black)),
                         hintStyle: TextStyle(
                             color: ColorHelper.black,
@@ -158,15 +213,15 @@ class TransferView extends GetView<TransferController> {
                         EdgeInsets.symmetric(horizontal: 28, vertical: 18),
                         focusedBorder: OutlineInputBorder(
                             borderRadius:
-                            BorderRadius.only(topRight: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
+                            BorderRadius.only(topRight: Radius.circular(5.0), bottomRight: Radius.circular(5.0)),
                             borderSide: BorderSide(color: ColorHelper.black)),
                         errorBorder: OutlineInputBorder(
                             borderRadius:
-                            BorderRadius.only(topRight: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
+                            BorderRadius.only(topRight: Radius.circular(5.0), bottomRight: Radius.circular(5.0)),
                             borderSide: BorderSide(color: Colors.red)),
                         enabledBorder: OutlineInputBorder(
                             borderRadius:
-                            BorderRadius.only(topRight: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
+                            BorderRadius.only(topRight: Radius.circular(5.0), bottomRight: Radius.circular(5.0)),
                             borderSide: BorderSide(color: ColorHelper.black)),
                         hintStyle: TextStyle(
                             color: ColorHelper.black,
@@ -181,7 +236,6 @@ class TransferView extends GetView<TransferController> {
               ],
             ),
           ),
-
         ],
       ),
     );

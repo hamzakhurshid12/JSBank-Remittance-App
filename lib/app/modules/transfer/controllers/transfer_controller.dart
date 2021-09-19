@@ -46,8 +46,14 @@ class TransferController extends GetxController {
   }
 
   void updateCurrencyConvertedAmounts(){
-    double output = getCurrencyConverted(sendingCurrencyController.text, receivingCurrencyController.text, double.parse(sendingAmountController.text.toString()));
-    receivingAmountController.text = output.toStringAsFixed(2);
+    if(sendingAmountController.text.isNotEmpty) {
+      double output = getCurrencyConverted(
+          sendingCurrencyController.text, receivingCurrencyController.text,
+          double.parse(sendingAmountController.text.toString()));
+      receivingAmountController.text = output.toStringAsFixed(2);
+    } else {
+      receivingAmountController.text = "0.00";
+    }
   }
 
   @override
