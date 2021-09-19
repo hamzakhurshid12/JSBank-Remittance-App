@@ -8,12 +8,11 @@ class BalanceCard extends StatelessWidget {
   String? title;
   String? amount;
   String? currency;
-  String? equivalentAmount;
   String? buttonText;
   Function()? onClickButton;
 
 
-  BalanceCard(this.title, this.amount, this.currency, this.equivalentAmount,
+  BalanceCard(this.title, this.amount, this.currency,
       this.buttonText, this.onClickButton, {Key? key}) : super(key: key);
 
   @override
@@ -61,31 +60,11 @@ class BalanceCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'Eq:',
-                          style: GoogleFonts.mulish(
-                              //textStyle: Theme.of(context).textTheme.display1,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                              color: ColorHelper.lightNavyBlue),
-                        ),
-                        Text(
-                          equivalentAmount!,
-                          style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Container(
-                        width: 85,
+                    buttonText!=""? Container(
+                        width: 90,
                         padding:
                         EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                         decoration: BoxDecoration(
@@ -107,7 +86,7 @@ class BalanceCard extends StatelessWidget {
                             ],
                           )
                         ),
-                        )
+                        ) : Container(),
                   ],
                 ),
                 Positioned(

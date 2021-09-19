@@ -1,0 +1,15 @@
+{"all_transactions": [
+  {
+    "title": "Remittance from USD",
+    "amount": 20450,
+    "currency": "PKR",
+    "buttonText": "200 USD"
+  },
+  {
+    "title": "Remittance from EUR",
+    "amount": 20450,
+    "currency": "PKR",
+    "buttonText": "250 EUR"
+  }
+]
+}

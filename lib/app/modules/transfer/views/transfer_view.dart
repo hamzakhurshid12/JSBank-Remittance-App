@@ -2,6 +2,7 @@ import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:jsbank_remittance/app/modules/transfer/views/transfer_successful_view.dart';
 import 'package:jsbank_remittance/app/utils/color_helper.dart';
 import 'package:jsbank_remittance/app/utils/widgets/buttons/flat_button_white.dart';
 import 'package:jsbank_remittance/app/utils/widgets/text/title_text.dart';
@@ -10,6 +11,8 @@ import '../controllers/transfer_controller.dart';
 
 class TransferView extends GetView<TransferController> {
   final TransferController _transferController = Get.put(TransferController());
+
+  TransferView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,41 +26,58 @@ class TransferView extends GetView<TransferController> {
             child: Image.asset("assets/images/whitelogo.png"),
           ),
           centerTitle: true),
-      body: Column(
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 20.0),
-          ),
-          Row(
-            children: [TitleText(text: "Send Money to your Wallet")],
-          ),
-          const Padding(
-            padding: EdgeInsets.only(top: 10.0),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: buildAmountSendRow(context),
-          ),
-          buildTransactionDetailsCard(context),
-          const Padding(
-            padding: EdgeInsets.only(top: 15.0),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: buildAmountReceiveRow(context),
-          ),
-          const Padding(
-            padding: EdgeInsets.only(top: 15.0),
-          ),
-          FlatButtonWhite(
-            onPressed: () {
-              print("button on pressed");
-            },
-            width: MediaQuery.of(context).size.width * 0.8,
-            text: 'Send Money',
-            isEnabled: true,
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(top: 20.0),
+            ),
+            Row(
+              children: const [TitleText(text: "Send Money to your PKR Wallet")],
+            ),
+            const Padding(
+              padding: EdgeInsets.only(top: 10.0),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: buildAmountSendRow(context),
+            ),
+            buildTransactionDetailsCard(context),
+            const Padding(
+              padding: EdgeInsets.only(top: 15.0),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: buildAmountReceiveRow(context),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(top: 15.0),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width*0.95,
+              height: 55.0,
+              decoration: const BoxDecoration(
+                shape: BoxShape.rectangle,
+                color: ColorHelper.darkgrey,
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              ),
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.all(18.0),
+                  primary: Colors.white,
+                  textStyle: TextStyle(
+                      color: Colors.grey.withOpacity(0.5), fontSize: 17, fontWeight: FontWeight.bold, fontFamily: "Roboto"),
+                ),
+                onPressed: (){
+                  if(_transferController.transferMoney()) {
+                    Get.to(TransferSuccessfulView());
+                  }
+                },
+                child: const Text("Send Money"),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -147,8 +167,7 @@ class TransferView extends GetView<TransferController> {
                             color: ColorHelper.black,
                             fontFamily: "Roboto",
                             fontSize: 11),
-                        suffixIcon: Icon(Icons.arrow_drop_down,
-                            color: Colors.black))),
+                        )),
               ),
             ],
           );
@@ -324,7 +343,7 @@ class TransferView extends GetView<TransferController> {
                             color: Colors.white,
                           ),
                           Text(
-                            'Takes less than a minute',
+                            ' Should take less than a minute',
                             style: TextStyle(color: Colors.white),
                           ),
                         ],

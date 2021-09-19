@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:jsbank_remittance/app/modules/transfer/controllers/transfer_controller.dart';
 import 'package:jsbank_remittance/app/modules/transfer/views/transfer_view.dart';
 import 'package:jsbank_remittance/app/utils/color_helper.dart';
 import 'package:jsbank_remittance/app/utils/widgets/balance_card.dart';
@@ -11,6 +12,9 @@ import 'package:jsbank_remittance/app/utils/widgets/text/title_text.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
+
+  final TransferController _transferController = Get.put(TransferController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,9 +43,17 @@ class HomeView extends GetView<HomeController> {
                 height: MediaQuery.of(context).size.width * 0.6,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 3,
+                  itemCount: _transferController.allWallets.allWallets!.length,
                   // ignore: avoid_print
-                  itemBuilder: (_, index) => BalanceCard("Home Remittance Account","2,242","EUR","354,000 PKR","Send",(){print("onclick Send Remittance!");}),
+                  itemBuilder: (_, index) => BalanceCard(_transferController.allWallets.allWallets![index].title,
+                      _transferController.allWallets.allWallets![index].amount!.toStringAsFixed(2),
+                      _transferController.allWallets.allWallets![index].currency,
+                      _transferController.allWallets.allWallets![index].buttonText,
+                          (){
+                            _transferController.sendingCurrencyController.text = _transferController.allWallets.allWallets![index].currency!;
+                            _transferController.sendingAmountController.text = _transferController.allWallets.allWallets![index].amount!.toStringAsFixed(2);
+                            Get.to(TransferView());
+                          }),
                 )
             ),
             const Padding(
@@ -116,9 +128,9 @@ class HomeView extends GetView<HomeController> {
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Column(
         children: <Widget>[
-          _transaction("Flight Ticket", "23 Feb 2020", true, "200 PKR"),
-          _transaction("Electricity Bill", "25 Feb 2020", false, "-100 PKR"),
-          _transaction("Flight Ticket", "03 Mar 2020", true, "555,000 PKR"),
+          _transaction("Converted from USD", "120 USD", true, "21,453 PKR"),
+          _transaction("Converted from EUR", "250 EUR", true, "42,254 PKR"),
+          _transaction("Converted from CAD", "10 CAD", true, "2,523 PKR"),
         ],
       ),
     );

@@ -1,0 +1,9 @@
+{"all_wallets": [
+  {
+        "title": "USD",
+        "amount": 20.04,
+        "currency": "USD",
+        "buttonText": "Transfer"
+  }
+  ]
+}

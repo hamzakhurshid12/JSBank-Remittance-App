@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
 class AuthController extends GetxController {
   final List<RxBool> isPasswordShownSignUp = [false.obs, false.obs];
@@ -62,6 +63,28 @@ class AuthController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+  }
+
+  Future<void> signupUser() async {
+
+
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer opFvkUhxPcDGheGXm9Ja7KYz7MKi'
+    };
+    var request = http.Request('POST', Uri.parse('https://sandbox.jsbl.com/v2/accountopening-blb'));
+    request.body = '''{\r\n"AccountOpeningRequest":{\r\n    "MerchantType" : "0088",\r\n    "TraceNo" : "211212",\r\n    "CompanyName" : "2Coders",\r\n    "DateTime" : "20210917222100",\r\n    "CNIC" : "3310533075974",\r\n    "CnicIssuanceDate" : "20160915",\r\n    "MobileNo" : "03356438145",\r\n    "MobileNetwork" : "UFONE",\r\n    "EmailId": "rnaeem.bese16seecs@seecs.edu.pk"\r\n    }\r\n}''';
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      print(await response.stream.bytesToString());
+    }
+    else {
+    print(response.reasonPhrase);
+    }
   }
 
   @override
